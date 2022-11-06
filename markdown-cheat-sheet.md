@@ -69,15 +69,14 @@ These elements extend the basic syntax by adding additional features. Not all Ma
 
 ### Fenced Code Block
 
-```
-```
+|```
 {
   "firstName": "John",
   "lastName": "Smith",
   "age": 25
 }
-```
-```
+|```
+
 ### Task List
 
 - [x] Write the press release
