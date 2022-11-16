@@ -1,5 +1,6 @@
 ## Update WSL
   `sudo apt get update`
+  
   OPT: `sudo do-release-upgrade`
   
 ## Add the Python PPA
@@ -7,6 +8,7 @@
   
 ## Update and install
   `sudo apt update`
+  
   `sudo apt install python3.11-full`
   
 ## Change the default
@@ -15,11 +17,13 @@
   
   ### Add the new
   `sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 100`
-  sudo update-alternatives --config python3
+  
+  `sudo update-alternatives --config python3`
   
  
  ## Make a venv and activate
   `python3 -m venv . `(/path/to/new/virtual/environment)
+  
   `source bin/activate`
   
   
