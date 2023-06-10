@@ -2,6 +2,8 @@
 
 django-browser-reload
 
+[Classy class based views to understand generic views](https://ccbv.co.uk/)
+
 # Things to do every project
 
 Use djangoX for starter template
