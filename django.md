@@ -14,6 +14,7 @@ faker
 
 # Setup
 
+Install requirements into venv even when using docker so linting works.
 
 # Tutorials
 
