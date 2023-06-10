@@ -4,6 +4,8 @@ django-browser-reload
 
 # Things to do every project
 
+Use djangoX for starter template
+
 # Testing
 
 pytest
