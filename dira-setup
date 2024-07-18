@@ -54,12 +54,12 @@ chmod +x /path/to/yourscript.sh
 ./yourscript.sh
 
 starting celery
-    celery -A djanogo_project multi start worker1 \
+    celery -A django_project multi start worker1 \
     --pidfile="$HOME/run/celery/%n.pid" \
     --logfile="$HOME/log/celery/%n%I.log"
               
 restart celery
-    celery -A djanogo_project multi restart worker1 \
+    celery -A django_project multi restart worker1 \
     --logfile="$HOME/log/celery/%n%I.log" \
     --pidfile="$HOME/run/celery/%n.pid
 stop celery
