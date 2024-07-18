@@ -1,0 +1,143 @@
+Create new user
+  sudo adduser <new_user>
+  sudo usermod -aG sudo <new_user>            
+  
+Setup vps (asumming 24.04)
+  register IP @ domain (*.domain.com)
+  install pip (apt install python3-pip) 
+  install uv (curl -LsSf https://astral.sh/uv/install.sh | sh)
+  install git (sudo apt autoremove)
+  install nginx (apt install nginx)
+
+Setup app
+  activate venv            
+  git config --global user.name "Your Name"
+  git config --global user.email "youremail@domain.com"
+  sudo apt install gh
+  gh auth login
+  git clone
+  setup venv (uv venv)
+  activate venv
+
+setup nginx
+  sudo nano /etc/nginx/sites-available/<name>
+  server {
+    server_name domain.address;
+
+    access_log off;
+
+    location /static/ {
+        alias /opt/myenv/static/;
+    }
+
+    location /media/ {
+        alias /opt/myenv/media/;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8001;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_set_header X-Real-IP $remote_addr;
+        add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+    }
+}            
+
+    cd /etc/nginx/sites-enabled 
+    sudo ln -s ../sites-available/myproject
+    sudo service nginx restart
+
+fix cffi
+    sudo apt install --fix-broken
+    sudo apt-get install build-essential libssl-dev libffi-dev python3.XX-dev 
+
+chmod +x /path/to/yourscript.sh
+./yourscript.sh
+
+starting celery
+    celery -A proj multi start worker1 \
+    --pidfile="$HOME/run/celery/%n.pid" \
+    --logfile="$HOME/log/celery/%n%I.log"
+              
+restart celery
+    celery -A djanogo_project multi restart worker1 \
+    --logfile="$HOME/log/celery/%n%I.log" \
+    --pidfile="$HOME/run/celery/%n.pid
+stop celery
+    celery multi stopwait worker1 --pidfile="$HOME/run/celery/%n.pid"             
+
+sudo ufw allow 'Nginx Full'   
+sudo ufw delete allow 'Nginx HTTP'        
+sudo ufw status
+
+https:
+    sudo apt update
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d yourdomain.com
+
+sudo nano /etc/systemd/system/gunicorn.service
+
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=kipimo
+Group=www-data
+WorkingDirectory=/home/yourdomain/yourdomain
+ExecStart=/home/yourdomain/yourdomain/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 django_project.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+server {
+    server_name yourdomain;
+
+    # Handle favicon.ico requests
+    location = /favicon.ico { 
+        access_log off; 
+        log_not_found off; 
+    }
+
+    # Serve static files
+    location /static/ {
+        alias /home/yourdomain/yourdomain/staticfiles/;
+        autoindex on;
+    }
+
+    # Serve media files
+    location /media/ {
+        alias /home/yourdomain/yourdomain/media/;
+        autoindex on;
+    }
+
+    # Proxy pass to Django application
+    location / {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:8000;
+    }
+}
+
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+sudo systemctl enable gunicorn
+
+sudo nginx -t
+sudo systemctl reload nginx
+sudo journalctl -u gunicorn
+              
+sudo chown -R www-data:www-data /home/kipimo/kipimo/staticfiles
+sudo chmod -R 755 /home/kipimo/kipimo/staticfiles
+
+sudo chown -R www-data:www-data /home/kipimo/kipimo/media
+sudo chmod -R 755 /home/kipimo/kipimo/media
+
+The answer
+Default User Home Directory Permissions
+So it seems that the default permissions on user home directories in Ubuntu 12.04 is 700.** Nginx needs to have read permission the files that should be served AND have execute permission in each of the parent directories along the path from the root to the served files.**
+
+You can give your user directory these permissions by running
+
+chmod 701 user_home
+
+              
+              
