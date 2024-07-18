@@ -54,7 +54,7 @@ chmod +x /path/to/yourscript.sh
 ./yourscript.sh
 
 starting celery
-    celery -A proj multi start worker1 \
+    celery -A djanogo_project multi start worker1 \
     --pidfile="$HOME/run/celery/%n.pid" \
     --logfile="$HOME/log/celery/%n%I.log"
               
