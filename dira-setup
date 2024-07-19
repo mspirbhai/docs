@@ -139,5 +139,5 @@ You can give your user directory these permissions by running
 
 chmod 701 user_home
 
-              
+sudo chmod -R 775 media
               
