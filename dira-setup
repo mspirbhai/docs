@@ -9,6 +9,8 @@ Setup vps (asumming 24.04)
   install git (sudo apt autoremove)
   install nginx (apt install nginx)
 
+sudo apt-get install wkhtmltopdf
+
 Setup app
   activate venv            
   git config --global user.name "Your Name"
