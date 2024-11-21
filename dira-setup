@@ -63,9 +63,9 @@ starting celery
 restart celery
     celery -A django_project multi restart worker1 \
     --logfile="$HOME/log/celery/%n%I.log" \
-    --pidfile="$HOME/run/celery/%n.pid
+    --pidfile="$HOME/run/celery/%n.pid"
 stop celery
-    celery multi stopwait worker1 --pidfile="$HOME/run/celery/%n.pid"             
+    celery multi stopwait worker1 --pidfile="$HOME/run/celery/%n.pid" --logfile="$HOME/logs/celery/%n%I.log"             
 
 sudo ufw allow 'Nginx Full'   
 sudo ufw delete allow 'Nginx HTTP'        
