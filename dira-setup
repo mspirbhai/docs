@@ -52,6 +52,9 @@ fix cffi
     sudo apt install --fix-broken
     sudo apt-get install build-essential libssl-dev libffi-dev python3.XX-dev 
 
+Installing rabbitmq
+Get quickstart script
+
 chmod +x /path/to/yourscript.sh
 ./yourscript.sh
 
