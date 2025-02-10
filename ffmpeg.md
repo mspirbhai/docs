@@ -20,3 +20,6 @@ no idea just logging
 ```
 ffmpeg -i test.avi -i normalized.mp3 -map 0:0 -map 1:0 -vcodec copy -acodec copy new_test.avi
 ```
+
+
+USerd prores and it works, files are bigger but editting is easy
